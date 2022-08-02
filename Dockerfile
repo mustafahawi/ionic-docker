@@ -3,7 +3,7 @@ MAINTAINER marco [dot] turi [at] hotmail [dot] it
 
 ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
-    NPM_VERSION=6.12.0 \
+    NPM_VERSION=6.14.17 \
     IONIC_VERSION=5.4.4 \
     CORDOVA_VERSION=9.0.0 \
     GRADLE_VERSION=5.6.2 \
@@ -14,20 +14,12 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Install basics
 RUN apt-get update &&  \
     apt-get install -y git wget curl unzip build-essential && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get update &&  \
     apt-get install -y nodejs && \
     npm install -g npm@"$NPM_VERSION" cordova@"$CORDOVA_VERSION" ionic@"$IONIC_VERSION" && \
     npm cache clear --force && \
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    dpkg --unpack google-chrome-stable_current_amd64.deb && \
-    apt-get install -f -y && \
-    apt-get clean && \
-    rm google-chrome-stable_current_amd64.deb && \
-    mkdir Sources && \
-    mkdir -p /root/.cache/yarn/ && \
-    # Font libraries
-    apt-get -qqy install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable libfreetype6 libfontconfig
+    apt-get clean
 
 # Set the locale
 RUN apt-get clean && apt-get update && apt-get install -y locales
