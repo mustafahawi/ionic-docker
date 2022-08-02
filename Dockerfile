@@ -3,7 +3,7 @@ MAINTAINER marco [dot] turi [at] hotmail [dot] it
 
 ENV DEBIAN_FRONTEND=noninteractive \
     ANDROID_HOME=/opt/android-sdk-linux \
-    NPM_VERSION=6.14.17 \
+    NPM_VERSION=6.14.0 \
     IONIC_VERSION=5.4.4 \
     CORDOVA_VERSION=9.0.0 \
     GRADLE_VERSION=5.6.2 \
